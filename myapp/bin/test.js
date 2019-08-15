@@ -8,6 +8,8 @@ var app = require('../app');
 var debug = require('debug')('myapp:server');
 var http = require('http');
 var router = express.Router();
+var birds = require('./birds');
+
 
 router.use(function timeLog(req, res, next){
     console.log('Time: ', Date.now());
@@ -38,7 +40,7 @@ app.all('/secret', function (req, res, next){
     console.log('Accessing the secret section ...');
     next();
 });
-
+app.use('/bires', birds);
 /**
  * Create HTTP server.
  */
