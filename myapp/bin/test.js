@@ -7,6 +7,18 @@ var express = require('express');
 var app = require('../app');
 var debug = require('debug')('myapp:server');
 var http = require('http');
+var router = express.Router();
+
+router.use(function timeLog(req, res, next){
+    console.log('Time: ', Date.now());
+    next();
+});
+router.get('/', function(req, res){
+    res.send('Birds home page');
+});
+router.get('/about', function(req, res){
+    res.send('About birds');
+});
 
 /**
  * Get port from environment and store in Express.
